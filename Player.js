@@ -24,18 +24,23 @@ class Player {
     }
   }
 
-  draw(grid) {
-    for (let i = 0; i < this._body.length; i++) {
-      grid[this._body[i].x][this._body[i].y] = "X";
-    }
-  }
-
-  move() {
+  move(gridWidth, gridHeight) {
     let body = [];
-    body.push({
+    let head = {
       x: this._body[0].x + this._direction.x,
       y: this._body[0].y + this._direction.y,
-    });
+    };
+    if (head.x < 1) {
+      head.x = gridHeight - 2;
+    } else if (head.x >= gridHeight - 1) {
+      head.x = 1;
+    }
+    if (head.y < 1) {
+      head.y = gridWidth - 2;
+    } else if (head.y >= gridWidth - 1) {
+      head.y = 1;
+    }
+    body.push(head);
     for (let i = 1; i < this._body.length; i++) {
       body.push({
         x: this._body[i - 1].x,
@@ -72,6 +77,17 @@ class Player {
         break;
       default:
         break;
+    }
+  }
+
+  draw(grid) {
+    try {
+      for (let i = 0; i < this._body.length; i++) {
+        grid[this._body[i].x][this._body[i].y] = "X";
+      }
+    } catch (error) {
+      console.log(this._body);
+      throw error;
     }
   }
 }

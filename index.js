@@ -11,7 +11,7 @@ const apple = new Apple();
 
 const gameLoop = () => {
   player.erase(grid);
-  player.move();
+  player.move(GRID_WIDTH, GRID_HEIGHT);
   player.draw(grid);
   apple.draw(grid);
 
