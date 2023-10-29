@@ -38,22 +38,10 @@ const updatePlayerGridPosition = (
   }
 };
 
-const getNextPlayerPosition = (currentPlayerPosition, direction) => {
-  const newPlayerPosition = [];
-  newPlayerPosition.push({
-    x: currentPlayerPosition[0].x + direction.x,
-    y: currentPlayerPosition[0].y + direction.y,
-  });
-  for (let i = 1; i < currentPlayerPosition.length; i++) {
-    newPlayerPosition.push({
-      x: currentPlayerPosition[i - 1].x,
-      y: currentPlayerPosition[i - 1].y,
-    });
-  }
-  return newPlayerPosition;
-};
-
 const gameLoop = () => {
+  player.erase(grid);
+  player.move();
+  player.draw(grid);
   printGrid(grid);
   // let newPlayerBlocks = getNextPlayerPosition(player._body, player._direction);
   // updatePlayerGridPosition(grid, player._body, newPlayerBlocks);
