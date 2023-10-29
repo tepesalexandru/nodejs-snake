@@ -23,29 +23,11 @@ const printGrid = (grid) => {
   }
 };
 
-const updatePlayerGridPosition = (
-  grid,
-  oldPlayerPosition,
-  newPlayerPosition
-) => {
-  // Remove the player from the grid
-  for (let i = 0; i < oldPlayerPosition.length; i++) {
-    grid[oldPlayerPosition[i].x][oldPlayerPosition[i].y] = " ";
-  }
-  // Remove the player from the grid
-  for (let i = 0; i < newPlayerPosition.length; i++) {
-    grid[newPlayerPosition[i].x][newPlayerPosition[i].y] = "X";
-  }
-};
-
 const gameLoop = () => {
   player.erase(grid);
   player.move();
   player.draw(grid);
   printGrid(grid);
-  // let newPlayerBlocks = getNextPlayerPosition(player._body, player._direction);
-  // updatePlayerGridPosition(grid, player._body, newPlayerBlocks);
-  // player._body = newPlayerBlocks;
   setTimeout(gameLoop, 50);
 };
 
