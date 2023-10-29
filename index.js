@@ -1,20 +1,10 @@
 "use strict";
 const Player = require("./Player");
+const Grid = require("./Grid");
 
 // Global Variables
 const gridHeight = 20;
 const gridWidth = 60;
-
-// Function to generate a matrix of size gridHeight x gridWidth, holding the grid
-const generateEmptyGrid = () => {
-  const row = Array(gridWidth - 2)
-    .fill(" ")
-    .join("");
-  const topBottomRow = Array(gridWidth).fill("#").join("");
-  const middleRows = Array(gridHeight - 2).fill(`#${row}#`);
-  const grid = [topBottomRow, ...middleRows, topBottomRow];
-  return grid.map((row) => row.split(""));
-};
 
 const printGrid = (grid) => {
   console.clear();
@@ -32,8 +22,8 @@ const gameLoop = () => {
 };
 
 const player = new Player();
+let grid = Grid.generateEmpty(gridWidth, gridHeight);
 
-let grid = generateEmptyGrid();
 gameLoop();
 
 var stdin = process.stdin;
