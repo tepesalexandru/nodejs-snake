@@ -2,10 +2,10 @@
 const Player = require("./Player");
 const Grid = require("./Grid");
 const { onKeyPress } = require("./helpers");
+const { GRID_WIDTH, GRID_HEIGHT } = require("./constants");
 
-// Global Variables
-const GRID_HEIGHT = 20;
-const GRID_WIDTH = 60;
+let grid = Grid.generateEmpty(GRID_WIDTH, GRID_HEIGHT);
+const player = new Player();
 
 const gameLoop = () => {
   player.erase(grid);
@@ -14,9 +14,6 @@ const gameLoop = () => {
   Grid.print(grid);
   setTimeout(gameLoop, 50);
 };
-
-const player = new Player();
-let grid = Grid.generateEmpty(GRID_WIDTH, GRID_HEIGHT);
 
 gameLoop();
 
