@@ -6,18 +6,11 @@ const Grid = require("./Grid");
 const gridHeight = 20;
 const gridWidth = 60;
 
-const printGrid = (grid) => {
-  console.clear();
-  for (let i = 0; i < gridHeight; i++) {
-    console.log(grid[i].join(""));
-  }
-};
-
 const gameLoop = () => {
   player.erase(grid);
   player.move();
   player.draw(grid);
-  printGrid(grid);
+  Grid.print(grid);
   setTimeout(gameLoop, 50);
 };
 

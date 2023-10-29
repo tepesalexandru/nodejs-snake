@@ -8,6 +8,13 @@ class Grid {
     const grid = [topBottomRow, ...middleRows, topBottomRow];
     return grid.map((row) => row.split(""));
   }
+
+  static print(grid) {
+    console.clear();
+    for (let i = 0; i < grid.length; i++) {
+      console.log(grid[i].join(""));
+    }
+  }
 }
 
 module.exports = Grid;
