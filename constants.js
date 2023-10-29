@@ -8,6 +8,8 @@ const DOWN_ARROW = "\u001B\u005B\u0042";
 const RIGHT_ARROW = "\u001B\u005B\u0043";
 const LEFT_ARROW = "\u001B\u005B\u0044";
 
+const CTRL_C = "\u0003";
+
 module.exports = {
   UP_DIRECTION,
   DOWN_DIRECTION,
@@ -17,4 +19,5 @@ module.exports = {
   DOWN_ARROW,
   RIGHT_ARROW,
   LEFT_ARROW,
+  CTRL_C,
 };
