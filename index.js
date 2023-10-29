@@ -55,20 +55,5 @@ stdin.on("data", function (key) {
     process.exit();
   }
 
-  // switch (key) {
-  //   case UP_ARROW:
-  //     currentDirection = UP;
-  //     break;
-  //   case DOWN_ARROW:
-  //     currentDirection = DOWN;
-  //     break;
-  //   case LEFT_ARROW:
-  //     currentDirection = LEFT;
-  //     break;
-  //   case RIGHT_ARROW:
-  //     currentDirection = RIGHT;
-  //     break;
-  //   default:
-  //     break;
-  // }
+  player.handleKeyPress(key);
 });

@@ -1,4 +1,13 @@
-const { RIGHT_DIRECTION } = require("./constants");
+const {
+  UP_DIRECTION,
+  DOWN_DIRECTION,
+  LEFT_DIRECTION,
+  RIGHT_DIRECTION,
+  UP_ARROW,
+  DOWN_ARROW,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+} = require("./constants");
 
 class Player {
   _direction;
@@ -34,6 +43,25 @@ class Player {
       });
     }
     this._body = body;
+  }
+
+  handleKeyPress(key) {
+    switch (key) {
+      case UP_ARROW:
+        this._direction = UP_DIRECTION;
+        break;
+      case DOWN_ARROW:
+        this._direction = DOWN_DIRECTION;
+        break;
+      case LEFT_ARROW:
+        this._direction = LEFT_DIRECTION;
+        break;
+      case RIGHT_ARROW:
+        this._direction = RIGHT_DIRECTION;
+        break;
+      default:
+        break;
+    }
   }
 }
 
