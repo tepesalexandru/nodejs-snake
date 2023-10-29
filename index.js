@@ -42,20 +42,81 @@ const updatePlayerGridPosition = (
   }
 };
 
-const gameLoop = () => {
-  printGrid(grid);
-  updatePlayerGridPosition(grid, playerBlocks, playerBlocks);
-  setTimeout(gameLoop, 35);
+const getNextPlayerPosition = (currentPlayerPosition, direction) => {
+  const newPlayerPosition = [];
+  newPlayerPosition.push({
+    x: currentPlayerPosition[0].x + direction.x,
+    y: currentPlayerPosition[0].y + direction.y,
+  });
+  for (let i = 1; i < currentPlayerPosition.length; i++) {
+    newPlayerPosition.push({
+      x: currentPlayerPosition[i - 1].x,
+      y: currentPlayerPosition[i - 1].y,
+    });
+  }
+  return newPlayerPosition;
 };
 
-const playerBlocks = [
+const gameLoop = () => {
+  printGrid(grid);
+  let newPlayerBlocks = getNextPlayerPosition(playerBlocks, currentDirection);
+  updatePlayerGridPosition(grid, playerBlocks, newPlayerBlocks);
+  playerBlocks = newPlayerBlocks;
+  setTimeout(gameLoop, 50);
+};
+
+let playerBlocks = [
   { x: 10, y: 10 },
   { x: 11, y: 10 },
   { x: 12, y: 10 },
   { x: 12, y: 11 },
   { x: 12, y: 12 },
+  { x: 12, y: 13 },
 ];
-const playerMovements = [RIGHT];
+
+let currentDirection = RIGHT;
 
 let grid = generateEmptyGrid();
 gameLoop();
+
+var stdin = process.stdin;
+
+// without this, we would only get streams once enter is pressed
+stdin.setRawMode(true);
+
+// resume stdin in the parent process (node app won't quit all by itself
+// unless an error or process.exit() happens)
+stdin.resume();
+
+// i don't want binary, do you?
+stdin.setEncoding("utf8");
+
+// on any data into stdin
+stdin.on("data", function (key) {
+  // ctrl-c ( end of text )
+  if (key === "\u0003") {
+    process.exit();
+  }
+
+  const UP_ARROW = "\u001B\u005B\u0041";
+  const DOWN_ARROW = "\u001B\u005B\u0042";
+  const RIGHT_ARROW = "\u001B\u005B\u0043";
+  const LEFT_ARROW = "\u001B\u005B\u0044";
+
+  switch (key) {
+    case UP_ARROW:
+      currentDirection = UP;
+      break;
+    case DOWN_ARROW:
+      currentDirection = DOWN;
+      break;
+    case LEFT_ARROW:
+      currentDirection = LEFT;
+      break;
+    case RIGHT_ARROW:
+      currentDirection = RIGHT;
+      break;
+    default:
+      break;
+  }
+});
