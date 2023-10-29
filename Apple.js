@@ -14,8 +14,8 @@ class Apple {
   }
 
   respawn() {
-    this._x = Math.floor(Math.random() * (GRID_HEIGHT - 1));
-    this._y = Math.floor(Math.random() * (GRID_WIDTH - 1));
+    this._x = 1 + Math.floor(Math.random() * (GRID_HEIGHT - 1));
+    this._y = 1 + Math.floor(Math.random() * (GRID_WIDTH - 1));
   }
 }
 
