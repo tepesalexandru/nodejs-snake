@@ -1,13 +1,10 @@
 "use strict";
+const Player = require("./Player");
+const { RIGHT, LEFT, UP, DOWN } = require("./constants");
 
 // Global Variables
 const gridHeight = 20;
 const gridWidth = 60;
-
-const UP = { x: -1, y: 0 };
-const DOWN = { x: 1, y: 0 };
-const LEFT = { x: 0, y: -1 };
-const RIGHT = { x: 0, y: 1 };
 
 // Function to generate a matrix of size gridHeight x gridWidth, holding the grid
 const generateEmptyGrid = () => {
@@ -64,6 +61,8 @@ const gameLoop = () => {
   playerBlocks = newPlayerBlocks;
   setTimeout(gameLoop, 50);
 };
+
+const player = new Player();
 
 let playerBlocks = [
   { x: 10, y: 10 },
