@@ -45,6 +45,17 @@ class Player {
     this._body = body;
   }
 
+  checkCollisionWithApple(apple) {
+    return this._body[0].x === apple._x && this._body[0].y === apple._y;
+  }
+
+  grow() {
+    this._body.push({
+      x: this._body[this._body.length - 1].x,
+      y: this._body[this._body.length - 1].y,
+    });
+  }
+
   handleKeyPress(key) {
     switch (key) {
       case UP_ARROW:
