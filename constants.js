@@ -1,11 +1,20 @@
-const UP = { x: -1, y: 0 };
-const DOWN = { x: 1, y: 0 };
-const LEFT = { x: 0, y: -1 };
-const RIGHT = { x: 0, y: 1 };
+const UP_DIRECTION = { x: -1, y: 0 };
+const DOWN_DIRECTION = { x: 1, y: 0 };
+const LEFT_DIRECTION = { x: 0, y: -1 };
+const RIGHT_DIRECTION = { x: 0, y: 1 };
+
+const UP_ARROW = "\u001B\u005B\u0041";
+const DOWN_ARROW = "\u001B\u005B\u0042";
+const RIGHT_ARROW = "\u001B\u005B\u0043";
+const LEFT_ARROW = "\u001B\u005B\u0044";
 
 module.exports = {
-  UP,
-  DOWN,
-  LEFT,
-  RIGHT,
+  UP_DIRECTION,
+  DOWN_DIRECTION,
+  LEFT_DIRECTION,
+  RIGHT_DIRECTION,
+  UP_ARROW,
+  DOWN_ARROW,
+  RIGHT_ARROW,
+  LEFT_ARROW,
 };

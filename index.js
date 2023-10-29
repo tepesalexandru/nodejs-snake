@@ -1,6 +1,5 @@
 "use strict";
 const Player = require("./Player");
-const { RIGHT, LEFT, UP, DOWN } = require("./constants");
 
 // Global Variables
 const gridHeight = 20;
@@ -56,24 +55,13 @@ const getNextPlayerPosition = (currentPlayerPosition, direction) => {
 
 const gameLoop = () => {
   printGrid(grid);
-  let newPlayerBlocks = getNextPlayerPosition(playerBlocks, currentDirection);
-  updatePlayerGridPosition(grid, playerBlocks, newPlayerBlocks);
-  playerBlocks = newPlayerBlocks;
+  // let newPlayerBlocks = getNextPlayerPosition(player._body, player._direction);
+  // updatePlayerGridPosition(grid, player._body, newPlayerBlocks);
+  // player._body = newPlayerBlocks;
   setTimeout(gameLoop, 50);
 };
 
 const player = new Player();
-
-let playerBlocks = [
-  { x: 10, y: 10 },
-  { x: 11, y: 10 },
-  { x: 12, y: 10 },
-  { x: 12, y: 11 },
-  { x: 12, y: 12 },
-  { x: 12, y: 13 },
-];
-
-let currentDirection = RIGHT;
 
 let grid = generateEmptyGrid();
 gameLoop();
@@ -97,25 +85,20 @@ stdin.on("data", function (key) {
     process.exit();
   }
 
-  const UP_ARROW = "\u001B\u005B\u0041";
-  const DOWN_ARROW = "\u001B\u005B\u0042";
-  const RIGHT_ARROW = "\u001B\u005B\u0043";
-  const LEFT_ARROW = "\u001B\u005B\u0044";
-
-  switch (key) {
-    case UP_ARROW:
-      currentDirection = UP;
-      break;
-    case DOWN_ARROW:
-      currentDirection = DOWN;
-      break;
-    case LEFT_ARROW:
-      currentDirection = LEFT;
-      break;
-    case RIGHT_ARROW:
-      currentDirection = RIGHT;
-      break;
-    default:
-      break;
-  }
+  // switch (key) {
+  //   case UP_ARROW:
+  //     currentDirection = UP;
+  //     break;
+  //   case DOWN_ARROW:
+  //     currentDirection = DOWN;
+  //     break;
+  //   case LEFT_ARROW:
+  //     currentDirection = LEFT;
+  //     break;
+  //   case RIGHT_ARROW:
+  //     currentDirection = RIGHT;
+  //     break;
+  //   default:
+  //     break;
+  // }
 });
